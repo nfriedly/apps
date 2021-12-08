@@ -7,3 +7,12 @@
 [submodule "msx"]
 	path = msx
 	url = https://github.com/pthalin/bittboy-msx
+[submodule "j2me"]
+	path = j2me
+	url = https://github.com/pthalin/bittboy-j2me
+[submodule "fuse-od"]
+	path = fuse-od
+	url = https://github.com/salvacam/fuse-od
+[submodule "speccy"]
+	path = speccy
+	url = https://github.com/salvacam/speccy
