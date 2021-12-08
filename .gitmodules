@@ -1,0 +1,9 @@
+[submodule "retroarch"]
+	path = retroarch
+	url = https://github.com/libretro/RetroArch
+[submodule "gambatte"]
+	path = gambatte
+	url = https://github.com/bardeci/gambatte-dms
+[submodule "msx"]
+	path = msx
+	url = https://github.com/pthalin/bittboy-msx
