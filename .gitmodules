@@ -16,3 +16,12 @@
 [submodule "speccy"]
 	path = speccy
 	url = https://github.com/salvacam/speccy
+[submodule "pocketsnes"]
+	path = pocketsnes
+	url = https://github.com/m45t3r/PocketSNES
+[submodule "snes9x4d"]
+	path = snes9x4d
+	url = https://github.com/m45t3r/snes9x4d-miyoo
+[submodule "dingux-cap32"]
+	path = dingux-cap32
+	url = https://github.com/salvacam/dingux-cap32
