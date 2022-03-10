@@ -36,8 +36,6 @@ jobs:
       run: mkdir -p /opt/buildroot-bittboy/output/ && ln -s /opt/miyoo /opt/buildroot-bittboy/output/host
     - name: build
       run: cd $APP && make && pwd && ls && ls bittboy-msx
-    - name: ls
-      run: pwd && ls && ls bittboy-msx
     - uses: actions/upload-artifact@v2
       with:
         name: $APP
