@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: build
-      run: cd dingux-cap32 && make -f Makefile.miyoo
+      run: cd dingux-cap32 && ls && make -f Makefile.miyoo
     - uses: actions/upload-artifact@v2
       with:
         name: dingux-cap32
