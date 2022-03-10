@@ -35,9 +35,9 @@ jobs:
     - name: tweak toolchain location
       run: mkdir -p /opt/buildroot-bittboy/output/ && ln -s /opt/miyoo /opt/buildroot-bittboy/output/host
     - name: build
-      run: cd $APP && make 
+      run: cd $APP && make && pwd && ls && ls bittboy-msx
     - uses: actions/upload-artifact@v2
       with:
         name: $APP
-        path: $APP/bittboy-msx/bittboy-msx
+        path: bittboy-msx/bittboy-msx
         if-no-files-found: error # 'error', 'warn', 'ignore'; defaults to `warn`
