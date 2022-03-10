@@ -38,6 +38,6 @@ jobs:
       run: cd $APP && make && pwd && ls && ls bittboy-msx
     - uses: actions/upload-artifact@v2
       with:
-        name: $APP
-        path: msx/bittboy-msx/bittboy-msx
+        name: ${{ env.APP }}
+        path: ${{ env.APP }}/bittboy-msx/bittboy-msx
         if-no-files-found: error # 'error', 'warn', 'ignore'; defaults to `warn`
