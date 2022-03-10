@@ -3,12 +3,12 @@ on: [push, pull_request]
 
 jobs:   
   dingux-cap32:
-    env:
-      APP: dingux-cap32
-    name: Build ${{ env.APP }}
+    name: Build dingux-cap32
     runs-on: ubuntu-20.04
     container:
       image: nfriedly/miyoo-toolchain:latest
+    env:
+      APP: dingux-cap32
     steps:
     - uses: actions/checkout@v2
     - name: checkout submodule
@@ -21,12 +21,12 @@ jobs:
         path: dingux-cap32/dingux-cap32
         if-no-files-found: error # 'error', 'warn', 'ignore'; defaults to `warn`
   msx:
-    env:
-      APP: msx
-    name: Build ${{ env.APP }}
+    name: Build msx
     runs-on: ubuntu-20.04
     container:
       image: nfriedly/miyoo-toolchain:latest
+    env:
+      APP: msx
     steps:
     - uses: actions/checkout@v2
     - name: checkout submodule
