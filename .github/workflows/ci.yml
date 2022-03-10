@@ -2,24 +2,24 @@ name: CI Build
 on: [push, pull_request]
 
 jobs:   
-  dingux-cap32:
-    name: Build dingux-cap32
-    runs-on: ubuntu-20.04
-    container:
-      image: nfriedly/miyoo-toolchain:latest
-    env:
-      APP: dingux-cap32
-    steps:
-    - uses: actions/checkout@v2
-    - name: checkout submodule
-      run: git submodule update --init $APP
-    - name: build
-      run: cd $APP && make -f Makefile.miyoo
-    - uses: actions/upload-artifact@v2
-      with:
-        name: $APP
-        path: dingux-cap32/dingux-cap32
-        if-no-files-found: error # 'error', 'warn', 'ignore'; defaults to `warn`
+#   dingux-cap32:
+#     name: Build dingux-cap32
+#     runs-on: ubuntu-20.04
+#     container:
+#       image: nfriedly/miyoo-toolchain:latest
+#     env:
+#       APP: dingux-cap32
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: checkout submodule
+#       run: git submodule update --init $APP
+#     - name: build
+#       run: cd $APP && make -f Makefile.miyoo
+#     - uses: actions/upload-artifact@v2
+#       with:
+#         name: $APP
+#         path: dingux-cap32/dingux-cap32
+#         if-no-files-found: error # 'error', 'warn', 'ignore'; defaults to `warn`
   msx:
     name: Build msx
     runs-on: ubuntu-20.04
@@ -35,9 +35,9 @@ jobs:
     - name: tweak toolchain location
       run: mkdir -p /opt/buildroot-bittboy/output/ && ln -s /opt/miyoo /opt/buildroot-bittboy/output/host
     - name: build
-      run: cd $APP && make
+      run: cd $APP && make 
     - uses: actions/upload-artifact@v2
       with:
         name: $APP
-        path: ./bittboy-msx/bittboy-msx
+        path: $APP/bittboy-msx/bittboy-msx
         if-no-files-found: error # 'error', 'warn', 'ignore'; defaults to `warn`
