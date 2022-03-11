@@ -77,17 +77,16 @@ jobs:
     env:
       APP: retroarch
       # override a few paths that default to uclibc
-      # SYSROOT is set by the docker image
-      GCW0_SDL_CONFIG: $SYSROOT/usr/bin/sdl-config
-      GCW0_FREETYPE_CONFIG: $SYSROOT/usr/bin/freetype-config
-      GCW0_INC_DIR: $SYSROOT/usr/include
-      GCW0_LIB_DIR: $SYSROOT/usr/lib
+      GCW0_SDL_CONFIG: /opt/miyoo/arm-buildroot-linux-musleabi/sysroot/usr/bin/sdl-config
+      GCW0_FREETYPE_CONFIG: /opt/miyoo/arm-buildroot-linux-musleabi/sysroot/usr/bin/freetype-config
+      GCW0_INC_DIR: /opt/miyoo/arm-buildroot-linux-musleabi/sysroot/usr/include
+      GCW0_LIB_DIR: /opt/miyoo/arm-buildroot-linux-musleabi/sysroot/usr/lib
     steps:
     - uses: actions/checkout@v2
     - name: checkout submodule
       run: git submodule update --init $APP
     - name: build
-      run: cd $APP && make
+      run: cd $APP && ./configure && make
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ env.APP }}
