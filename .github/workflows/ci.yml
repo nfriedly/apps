@@ -48,13 +48,41 @@ jobs:
 #         name: ${{ env.APP }}
 #         path: ${{ env.APP }}/bittboy-msx/bittboy-msx
 #         if-no-files-found: error
-  pocketsnes:
-    name: Build pocketsnes
+
+#   # compiling fails due to unknown flags 
+#   pocketsnes:
+#     name: Build pocketsnes
+#     runs-on: ubuntu-20.04
+#     container:
+#       image: nfriedly/miyoo-toolchain:latest
+#     env:
+#       APP: pocketsnes
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: checkout submodule
+#       run: git submodule update --init $APP
+#     - name: build
+#       run: cd $APP && make
+#     - uses: actions/upload-artifact@v2
+#       with:
+#         name: ${{ env.APP }}
+#         path: ${{ env.APP }}/dist/PocketSNES.dge
+#         if-no-files-found: error
+
+  # temporarily disabled
+  retroarch:
+    name: Build msx
     runs-on: ubuntu-20.04
     container:
       image: nfriedly/miyoo-toolchain:latest
     env:
-      APP: pocketsnes
+      APP: retroarch
+      # override a few paths that default to uclibc
+      # SYSROOT is set by the docker image
+      GCW0_SDL_CONFIG: ${{ env.SYSROOT }}/usr/bin/sdl-config
+      GCW0_FREETYPE_CONFIG: ${{ env.SYSROOT }}/usr/bin/freetype-config
+      GCW0_INC_DIR: ${{ env.SYSROOT }}/usr/include
+      GCW0_LIB_DIR: ${{ env.SYSROOT }}/usr/lib
     steps:
     - uses: actions/checkout@v2
     - name: checkout submodule
@@ -64,5 +92,5 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ env.APP }}
-        path: ${{ env.APP }}/dist/PocketSNES.dge
+        path: ${{ env.APP }}/retroarch
         if-no-files-found: error
