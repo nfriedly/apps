@@ -69,8 +69,9 @@ jobs:
 #         path: ${{ env.APP }}/dist/PocketSNES.dge
 #         if-no-files-found: error
 
+  # ./configure thinks its missing the c compiler
   retroarch:
-    name: Build msx
+    name: Build retroarch
     runs-on: ubuntu-20.04
     container:
       image: nfriedly/miyoo-toolchain:latest
@@ -86,7 +87,7 @@ jobs:
     - name: checkout submodule
       run: git submodule update --init $APP
     - name: build
-      run: cd $APP && ./configure && make
+      run: cd $APP && ./configure --host=$CROSS_TRIPLE && make
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ env.APP }}
